@@ -1,17 +1,19 @@
-const casas = require('./imobiliaria')
+const imobiliaria = require('./imobiliaria')
 
-const vendaDeMoradia = (casas = []) => {
+const vendaDeMoradia = (imobiliaria = []) => {
   const data = new Date ()
   const hora = data.getHours()
   const minutos = data.getMinutes()
   const dia = data.getDate()
   const mes = data.getMonth() + 1
   const ano = data.getFullYear()
-  for (let i = 0; i < casas.casas.length; i++) {
-      if (casas.casas[i].vendida === true)
-          casas.casas[i].data =
+
+  imobiliaria.casas.forEach(casas => {
+    if (casas.vendida === true)
+          casas.data =
             `Vendida às ${hora}:${minutos}, na data ${dia}/${mes}/${ano}`
-  }
-  return casas
+  })
+  return imobiliaria
 }
-console.log(vendaDeMoradia(casas))
+
+console.log(vendaDeMoradia(imobiliaria))
